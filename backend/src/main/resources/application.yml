@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: business-ops-api
+  datasource:
+    url: jdbc:mysql://localhost:3306/hospital_business?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+  cache:
+    type: simple
+
+server:
+  port: 8080
+  error:
+    include-message: always
+
+app:
+  jwt:
+    secret: "ChangeThisToAVeryLongSecretKeyForHS256SigningAtLeast256BitsLongChangeMe123"
+    expiration-ms: 86400000
+  billing:
+    tax-rate: 0.10
+    invoice-due-days: 14
+
+logging:
+  level:
+    org.springframework.security: INFO
+    com.hospitalmgmt.ops: INFO
